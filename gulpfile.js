@@ -10,15 +10,13 @@ var gulp = require('gulp'),
   notify = require('gulp-notify');
 
 var paths = {
-  js: 'lib'
+  js: 'lib/*.js'
 };
 
-var dests = {
-  js: 'dist'
-};
+var dest = 'dist';
 
 gulp.task('clean', function(cb) {
-  del('dist', cb);
+  del(dest, cb);
 });
 
 gulp.task('js', function() {
@@ -28,8 +26,8 @@ gulp.task('js', function() {
     .pipe(concat('binder.js'))
     .pipe(rename({ suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest(dests.js))
-    .pipe(notify({ mesage: 'linted and minified js' }));
+    .pipe(gulp.dest(dest))
+    .pipe(notify('linted and minified js'));
 });
 
 gulp.task('default', ['clean'], function() {
