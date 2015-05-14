@@ -1,0 +1,19 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div>
+      <p>{{count}}</p>
+    </div>
+    <script type="text/javascript" src="../lib/binder.js"></script>
+    <script>
+      var x = 1;
+      binder.addModel('count', x);
+      setInterval(function() {
+        console.log('x is', x);
+        binder.updateModel('count', x);
+        x++;
+      }, 1000);
+    </script>
+  </body>
+</html>
